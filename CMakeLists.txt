@@ -11,7 +11,7 @@ set(SRC_LIST
     Square.cpp
     Shape.cpp
     main.cpp
-)
+        Color.cpp Color.h ShapeFactory.cpp ShapeFactory.h)
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 # add_compile_options(${PROJECT_NAME} -Wall -Werror -Wpedantic -Wextra)

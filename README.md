@@ -67,8 +67,8 @@ Or use QT Creator... (or other IDE).
     Write a factory method which should work like `std::make_shared`.
     It should have below signature:
     ```cpp
-    template<class DerivedType, class... Arguments>
+    template<class ShapeType, class... Arguments>
     std::shared_ptr<Shape> make_shape(Arguments&&... args);
     ```
-    Inside, it should create a `shared_ptr` to `DerivedType` and pass all arguments into constructor of `DerivedType` via perfect forwarding.
+    Inside, it should create a `shared_ptr` to `ShapeType` and pass all arguments into constructor of `ShapeType` via perfect forwarding.
        

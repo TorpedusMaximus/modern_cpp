@@ -4,15 +4,21 @@
 
 class Square : public Rectangle
 {
+    using Rectangle::Rectangle;
 public:
-    Square(double x);
-    Square(const Square & other);
+    explicit Square(double x);
+    Square(const Square & other) = default;
+    Square()=delete;
+    Square(Square&& square) noexcept = default;
+    ~Square() noexcept override = default;
 
-    double getArea();
-    double getPerimeter();
-    void print();
+    Square& operator=(Square && other) noexcept = default;
+    Square& operator=(const Square & other) noexcept = default;
 
-private:
-    double getY(); // should not have Y dimension
-    Square();
+
+    double getY()=delete;
+    double getArea() const noexcept override;
+    double getPerimeter()const noexcept override;
+    void print()const override;
+
 };

@@ -2,19 +2,25 @@
 
 #include "Shape.hpp"
 
-class Circle : public Shape
+class Circle final : public Shape
 {
+    using Shape::Shape;
 public:
     Circle(double r);
-    Circle(const Circle & other);
+    Circle(const Circle & other) = default;
+    Circle() = delete;
+    Circle(Circle && circle) noexcept = default;
+    ~Circle() noexcept override = default;
 
-    double getArea() const;
-    double getPerimeter() const;
+    Circle& operator=(const Circle & other) noexcept = default;
+    Circle& operator=(Circle && other) noexcept = default;
+
+    double getArea() const noexcept override;
+    double getPerimeter() const noexcept override;
     double getRadius() const;
-    void print() const;
-
+    void print() const override;
+    [[deprecated]]
+    double getPI();
 private:
-    Circle(); // doesn't allow to call default constructor
-
-    double r_;
+    double r_=0;
 };
